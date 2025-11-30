@@ -1,0 +1,360 @@
+:root {
+  --bg-dark: #0f172a;
+  --glass-bg: rgba(30, 41, 59, 0.85);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --primary: #3c65f9;
+  --accent: #63d0ff;
+  --text: #f8fafc;
+  --text-muted: #94a3b8;
+  --danger: #ef4444;
+  --success: #10b981;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  background: var(--bg-dark);
+  background-image: radial-gradient(circle at 50% 0%, rgba(60, 101, 249, 0.15), transparent 50%);
+  color: var(--text);
+
+  /* ВИПРАВЛЕННЯ ДЛЯ МОБІЛЬНИХ (Safari/Chrome) */
+  width: 100%;
+  height: 100vh; /* Фоллбек */
+  height: 100dvh; /* Динамічна висота враховує адресний рядок */
+  overflow: hidden;
+}
+
+/* Utils */
+.view {
+  /* Важливо: view бере висоту від body, а не екрану, щоб уникнути скрол-багів */
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Glass Styles */
+.glass-panel,
+.glass-input {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+}
+
+.glass-input {
+  background: rgba(0, 0, 0, 0.3);
+  width: 100%;
+  padding: 12px;
+  color: var(--text);
+  font-size: 16px; /* 16px запобігає авто-зуму на iPhone */
+  outline: none;
+  border: 1px solid var(--glass-border);
+  margin-top: 5px;
+}
+.glass-input:focus {
+  border-color: var(--primary);
+}
+
+/* Login */
+#view-login {
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.login-card {
+  padding: 40px;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+.jarvis-logo.large {
+  width: 80px;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 0 15px rgba(60, 101, 249, 0.5));
+}
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  border: none;
+  color: white;
+  padding: 14px;
+  width: 100%;
+  border-radius: 12px;
+  font-weight: 600;
+  margin-top: 20px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* Header */
+.app-header {
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0; /* Шапка не стискається */
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 18px;
+}
+.jarvis-logo.small {
+  width: 40px; /* Збільшено для кращого вигляду */
+}
+
+/* Right side of header */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Back Button Style */
+.btn-back {
+  color: var(--accent);
+  text-decoration: none;
+  border: 1px solid rgba(99, 208, 255, 0.3);
+  padding: 6px 12px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+.btn-back:hover {
+  background: rgba(99, 208, 255, 0.1);
+  border-color: var(--accent);
+  box-shadow: 0 0 10px rgba(99, 208, 255, 0.3);
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 5px;
+}
+
+/* Balance */
+.balance-card {
+  margin: 0 20px 15px 20px;
+  padding: 15px;
+  flex-shrink: 0;
+}
+.balance-card .row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+.balance-card label {
+  color: var(--text-muted);
+  font-size: 12px;
+  text-transform: uppercase;
+}
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.math-input {
+  background: transparent;
+  border: none;
+  color: var(--accent);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 18px;
+  text-align: right;
+  width: 100px;
+  outline: none;
+}
+.balance-text {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 20px;
+  font-weight: 700;
+}
+.text-success {
+  color: var(--success);
+}
+.text-danger {
+  color: var(--danger);
+}
+
+/* Tabs */
+.segmented-control {
+  display: flex;
+  margin: 0 20px 15px 20px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+  padding: 4px;
+  flex-shrink: 0;
+}
+.tab-btn {
+  flex: 1;
+  background: none;
+  border: none;
+  padding: 10px;
+  color: var(--text-muted);
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.tab-btn.active {
+  background: var(--primary);
+  color: white;
+}
+
+.tab-content {
+  flex: 1;
+  overflow-y: auto; /* Скрол тільки тут */
+  padding: 0 20px 80px 20px; /* Нижній відступ, щоб клавіатура/кнопки не перекривали контент */
+  display: none;
+  -webkit-overflow-scrolling: touch; /* Плавний скрол на iOS */
+}
+.tab-content.active {
+  display: block !important;
+}
+
+/* Table */
+.table-container {
+  overflow: hidden;
+}
+.table-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid var(--glass-border);
+}
+.btn-add {
+  background: var(--primary);
+  border: none;
+  color: white;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.scroll-wrapper {
+  overflow-x: auto;
+  width: 100%;
+  padding-bottom: 5px; /* Для скролбару */
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 350px;
+}
+th {
+  text-align: left;
+  padding: 10px;
+  color: var(--text-muted);
+  font-size: 11px;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--glass-border);
+  white-space: nowrap;
+}
+td {
+  padding: 5px 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+td input {
+  background: transparent;
+  border: none;
+  color: var(--text);
+  width: 100%;
+  font-size: 14px;
+  padding: 8px 0;
+  font-family: "JetBrains Mono", monospace;
+}
+td input[type="text"] {
+  font-family: "Inter", sans-serif;
+}
+td input:focus {
+  border-bottom: 1px solid var(--primary);
+  outline: none;
+}
+.delete-btn {
+  background: none;
+  border: none;
+  color: var(--danger);
+  font-size: 18px;
+  cursor: pointer;
+  padding: 10px;
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; /* Тут fixed position, тому 100% ок */
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+  display: flex;
+  align-items: flex-end; /* Шторка знизу */
+}
+.modal.hidden {
+  display: none !important;
+}
+.modal-content {
+  width: 100%;
+  background: #1e293b;
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
+  padding: 20px;
+  padding-bottom: 40px; /* Безпечний відступ знизу */
+  animation: slideUp 0.3s ease;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.close-btn {
+  background: none;
+  border: none;
+  color: var(--text);
+  font-size: 28px;
+  cursor: pointer;
+}
+.setting-group {
+  margin-bottom: 20px;
+}
+.btn-danger {
+  background: rgba(239, 68, 68, 0.2);
+  color: var(--danger);
+  border: 1px solid var(--danger);
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
