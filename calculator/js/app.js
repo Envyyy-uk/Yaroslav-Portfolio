@@ -1,7 +1,7 @@
 // --- 1. TRANSLATIONS ---
 const translations = {
   en: {
-    app_title: "Jarvis Global",
+    app_title: "Yaroslav Global",
     btn_login: "Enter Dashboard",
     label_income: "Total Income",
     label_balance: "Global Remaining",
@@ -18,7 +18,7 @@ const translations = {
     btn_logout: "Log Out",
   },
   ua: {
-    app_title: "Jarvis Global",
+    app_title: "Yaroslav Global",
     btn_login: "Увійти",
     label_income: "Дохід",
     label_balance: "Загальний Залишок",
@@ -35,7 +35,7 @@ const translations = {
     btn_logout: "Вийти",
   },
   pl: {
-    app_title: "Jarvis",
+    app_title: "Yaroslav",
     btn_login: "Zaloguj",
     label_income: "Dochód",
     label_balance: "Pozostało",
@@ -52,7 +52,7 @@ const translations = {
     btn_logout: "Wyloguj",
   },
   de: {
-    app_title: "Jarvis",
+    app_title: "Yaroslav",
     btn_login: "Eintreten",
     label_income: "Einkommen",
     label_balance: "Restbetrag",
@@ -69,7 +69,7 @@ const translations = {
     btn_logout: "Abmelden",
   },
   fr: {
-    app_title: "Jarvis",
+    app_title: "Yaroslav",
     btn_login: "Entrer",
     label_income: "Revenu",
     label_balance: "Reste Global",
@@ -86,7 +86,7 @@ const translations = {
     btn_logout: "Déconnexion",
   },
   es: {
-    app_title: "Jarvis",
+    app_title: "Yaroslav",
     btn_login: "Entrar",
     label_income: "Ingresos",
     label_balance: "Restante Global",
