@@ -1,6 +1,7 @@
 :root {
   --bg-color: #050505;
   --card-bg: rgba(10, 10, 10, 0.7);
+  --card-bg-solid: #0a0a0a;
   --primary-color: #00f3ff;
   --accent-color: #63d0ff;
   --text-color: #e6f9ff;
@@ -24,7 +25,7 @@ html.light-theme {
   --shadow-strong: 0 12px 40px rgba(12, 20, 30, 0.06);
 }
 
-/* Smooth transitions */
+/* Smooth transitions for theme variables */
 html,
 body,
 .project-card,
@@ -54,17 +55,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overflow-y: auto;
   line-height: 1.45;
-}
-
-/* Top fixed small logo */
-.top-logo {
-  position: fixed;
-  top: 8px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 60;
-  pointer-events: none; /* decorative only */
-  opacity: 0.95;
 }
 
 /* Background video & overlays */
@@ -140,13 +130,13 @@ body.light-theme .bg-grid {
 
 /* Header controls (top-right) */
 .header-controls-absolute {
-  position: fixed;
-  top: 12px;
-  right: 18px;
+  position: absolute;
+  top: 18px;
+  right: 20px;
   display: flex;
   gap: 10px;
   align-items: center;
-  z-index: 70;
+  z-index: 40;
 }
 .back-nav-btn {
   display: inline-block;
@@ -166,9 +156,9 @@ body.light-theme .back-nav-btn {
 .github-link,
 #theme-toggle {
   display: inline-flex;
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
   align-items: center;
   justify-content: center;
   background: rgba(0, 0, 0, 0.28);
@@ -183,12 +173,13 @@ body.light-theme #theme-toggle {
   color: var(--text-color);
 }
 
-/* Remove bright focus ring only for small icon controls (github & theme) */
+/* Remove bright focus ring only for these small icon controls */
 .github-link:focus,
 #theme-toggle:focus {
   outline: none;
   box-shadow: none;
 }
+/* Also remove inner focus for Firefox */
 #theme-toggle::-moz-focus-inner {
   border: 0;
   padding: 0;
@@ -318,6 +309,13 @@ body.light-theme .launch-btn {
 .project-card.disabled .card-content p {
   color: rgba(255, 255, 255, 0.72);
 }
+
+/* FIX: Text readability in Light Theme for Disabled Cards */
+body.light-theme .project-card.disabled .card-content h3,
+body.light-theme .project-card.disabled .card-content p {
+  color: rgba(0, 0, 0, 0.6);
+}
+
 .project-card.disabled::after {
   content: "";
   position: absolute;
@@ -372,7 +370,7 @@ footer {
   color: var(--primary-color);
 }
 
-/* Keep focus visible for important controls (excluding small icons) */
+/* Focus (keep visible for main controls) */
 a:focus:not(.github-link):not(#theme-toggle),
 button:focus:not(#theme-toggle) {
   box-shadow: 0 0 0 6px rgba(0, 143, 191, 0.08);
@@ -388,12 +386,12 @@ button:focus:not(#theme-toggle) {
     grid-template-columns: 1fr;
   }
   .header-controls-absolute {
-    top: 10px;
-    right: 10px;
+    top: 12px;
+    right: 12px;
     gap: 8px;
   }
-  .top-logo {
-    display: none;
+  .logo-container {
+    margin-bottom: 14px;
   }
 }
 @media (max-width: 600px) {
